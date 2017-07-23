@@ -8,7 +8,12 @@ export default class InputImageComponent extends Component {
     console.log(files)
     var urlObj = URL.createObjectURL(files)
     console.log(urlObj)
-    this.props.setImage(urlObj)
+    const image = new window.Image()
+    image.src = urlObj
+    image.onload = () => {
+    console.log(image)
+    this.props.setImage(image.src, image.width, image.height)
+  }
   }
  state = {
   image: null,
@@ -16,8 +21,8 @@ export default class InputImageComponent extends Component {
   height: 0
 }
   componentDidUpdate() {
-  const image = new window.Image();
-  image.src = this.props.file;
+  const image = new window.Image()
+  image.src = this.props.file
   image.onload = () => {
     this.setState({
       image: image,
