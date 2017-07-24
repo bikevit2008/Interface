@@ -3,14 +3,34 @@ import {Layer, Stage, Image} from 'react-konva';
 
 
 export default class CanvasComponent extends Component {
+ state = {
+  image: null,
+  width: 0,
+  height: 0
+}
+  componentDidUpdate() {
+  const image = new window.Image()
+  image.src = this.props.file
+  image.onload = () => {
+    this.setState({
+      image: image,
+      width: image.width,
+      height: image.height
+    });
+  }
+}
+ 
   render() {
-    const { year, photos } = this.props
-    return <div>
-      <p>У тебя {photos.length} фото за {year} год</p>
+    return <div className='ib page'>
+              <Stage width={this.state.width} height={this.state.height}>
+                  <Layer>
+                    <Image image={this.state.image} />
+                  </Layer>
+              </Stage>
     </div>
   }
 }
 
-Page.propTypes = {
+CanvasComponent.propTypes = {
   file: PropTypes.object.isRequired
 }
