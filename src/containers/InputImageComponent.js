@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import InputImageComponent from '../components/InputImageComponent'
 
-import * as InputImageActions from '../actions/InputImageActions'
+import {setImage}  from '../actions/InputImageActions'
 
 function mapStateToProps(state) {
     return {
@@ -14,7 +14,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        InputImageActions: bindActionCreators(InputImageActions, dispatch)
+        setImage: bindActionCreators(setImage, dispatch)
     }
 }
 
