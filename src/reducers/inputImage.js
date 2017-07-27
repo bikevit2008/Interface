@@ -1,4 +1,4 @@
-import { SET_IMAGE } from '../constants/InputImage'
+import { SET_IMAGE } from '../constants/inputImage'
 
 const initialState = {
   file: 'https://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
