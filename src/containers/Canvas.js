@@ -5,7 +5,7 @@ import Canvas from '../components/Canvas'
 
 function mapStateToProps(state) {
     return {
-        image: state.inputImage
+        image: state.inputImage.image
     }
 }
 
