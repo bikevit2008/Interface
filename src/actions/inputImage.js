@@ -1,4 +1,4 @@
-import { SET_IMAGE } from '../constants/InputImage'
+import { SET_IMAGE } from '../constants/inputImage'
 
 export function setImage(file) {
   return {
