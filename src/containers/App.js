@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react'
 
-import InputImageComponent from './InputImageComponent'
-import CanvasComponent from '../components/CanvasComponent'
+import InputImage from './InputImage'
+import Canvas from './Canvas'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {AppBar} from 'material-ui';
@@ -10,9 +10,8 @@ import {AppBar} from 'material-ui';
 
 
 
-export default class extends Component {
+export default class App extends Component {
     render() {
-        const { file } = this.props.image;
         const titleBar = 'Лазерная гравировка';
 
         return (
@@ -20,8 +19,8 @@ export default class extends Component {
             <MuiThemeProvider>
                 <AppBar showMenuIconButton={false} title={titleBar} />
             </MuiThemeProvider>
-            <CanvasComponent file={file} />
-            <InputImageComponent />
+            <Canvas />
+            <InputImage />
         </div>
         )
   }
