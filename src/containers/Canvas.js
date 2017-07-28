@@ -9,8 +9,4 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps() {
-    return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Canvas)
+export default connect(mapStateToProps)(Canvas)
