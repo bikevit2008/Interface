@@ -21,15 +21,12 @@ export default function websocket(state = initialState, action) {
         case WEBSOCKET_CONNECT:
             return { ...state, url: action.payload.url, connectState: WEBSOCKET_CONNECT}
         case WEBSOCKET_DISCONNECT:
-            return { ...state, connectState: WEBSOCKET_DISCONNECT}     
+        case WEBSOCKET_CONNECTING:
+        case WEBSOCKET_OPEN:
+        case WEBSOCKET_CLOSED:
+            return { ...state, connectState: action.type}     
         case WEBSOCKET_SEND:
             return { ...state, clientMessages: [...state.clientMessages, action.payload] }
-        case WEBSOCKET_CONNECTING:
-            return { ...state, connectState: WEBSOCKET_CONNECTING}
-        case WEBSOCKET_CLOSED:
-            return { ...state, connectState: WEBSOCKET_CLOSED}     
-        case WEBSOCKET_OPEN:
-            return { ...state, connectState: WEBSOCKET_OPEN}
         case WEBSOCKET_MESSAGE:
             return { ...state, serverMessages: [...state.serverMessages, action.payload.data]}
         default:
