@@ -23,28 +23,36 @@ module.exports = {
     extensions: ['.js', '.jsx']
     },
   module: {
-    rules: [
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "eslint-loader",
-        include: [
-          path.resolve(__dirname, "src"),
-        ],
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loaders: ['react-hot-loader', 'babel-loader'],
-        include: [
-          path.resolve(__dirname, "src"),
-        ],
-      },
-      {
-        test:   /\.css$/,
-        loader: "style-loader!css-loader!postcss-loader",
-      }
+      rules: [
+        {
+            enforce: "pre",
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: "eslint-loader",
+            include: [
+              path.resolve(__dirname, "src"),
+            ],
+        },
+        {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loaders: ['react-hot-loader', 'babel-loader'],
+            include: [
+                path.resolve(__dirname, "src"),
+            ],
+        },
+        {
+            test: /\.css$/,
+            loader: 'style-loader'
+        },
+        {
+            test: /\.css$/,
+            loader: 'css-loader',
+            query: {
+                modules: true,
+                localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+        }
     ],
   }
 }

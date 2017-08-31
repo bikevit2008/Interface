@@ -1,5 +1,8 @@
 import React, { PropTypes, Component } from 'react'
-import {Layer, Stage, Image} from 'react-konva';
+import {Layer, Stage, Image} from 'react-konva'
+import {MuiThemeProvider} from 'material-ui/styles'
+import {Paper} from 'material-ui'
+
 
 
 export default class Canvas extends Component {
@@ -18,14 +21,21 @@ export default class Canvas extends Component {
  
     render() {
         const { width, height } = this.props.image
+        const style = {
+            minHeight: 200,
+            padding: 5,
+            margin: 12
+        }
         return (
-            <div>
-                <Stage width={width} height={height}>
-                    <Layer>
-                        <Image image={this.state.image} />
-                    </Layer>
-                </Stage>
-            </div>
+            <MuiThemeProvider>
+                <Paper style={style}>
+                    <Stage width={width} height={height}>
+                        <Layer>
+                            <Image image={this.state.image} />
+                        </Layer>
+                    </Stage>
+                </Paper>
+            </MuiThemeProvider>
       )
     }
 }

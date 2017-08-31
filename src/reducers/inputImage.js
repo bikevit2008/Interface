@@ -2,7 +2,7 @@ import { SET_IMAGE } from '../constants/inputImage'
 
 const initialState = {
     image: {
-        file: '',
+        file: undefined,
         width: 0,
         height: 0
     }

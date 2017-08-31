@@ -1,0 +1,17 @@
+.indicator> span{
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 1.5;
+    font-size: 12px;
+    color: #fff;
+    vertical-align: middle;
+    white-space: nowrap;
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+.indicatorOnline{
+    background: #57e000;
+}
+.indicatorOffline{
+    background: red;
+}
