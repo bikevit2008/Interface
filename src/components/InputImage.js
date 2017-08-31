@@ -2,21 +2,11 @@ import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {RaisedButton} from 'material-ui'
 
-function createObjectURL ( file ) {
-    if ( window.webkitURL ) {
-        return window.webkitURL.createObjectURL( file )
-    } else if ( window.URL && window.URL.createObjectURL ) {
-        return window.URL.createObjectURL( file )
-    } else {
-        return null
-    }
-}
-
 
 export default class InputImage extends Component {
     onChangeFileImage(e) {
         var file = e.target.files[0]
-        var urlObj = createObjectURL(file)
+        var urlObj = URL.createObjectURL(file)
         const img = new window.Image()
         img.src = urlObj
         img.onload = () => {
