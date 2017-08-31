@@ -34,7 +34,7 @@ export const message = (event)=> ({
   type: WEBSOCKET_MESSAGE,
   payload: {
     timestamp: new Date(),
-    data: event.data,
+    data: JSON.parse(event.data),
     event
   }
 });
