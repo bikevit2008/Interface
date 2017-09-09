@@ -5,9 +5,9 @@ var handle = function(ws, req){
       ws.binaryType = 'arraybuffer'
       ws.on('message', msg => {
         if (typeof msg !== 'string') {
-            const array = new Uint8ClampedArray(msg);
+            const array = new Uint8ClampedArray(msg)
 
-            console.log(array);
+            console.log(array)
         }
         else{
             console.log('Meassage got: ' + msg)
