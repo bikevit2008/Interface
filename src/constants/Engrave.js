@@ -1,0 +1,6 @@
+export const NOT_STARTED = 'NOT_STARTED'
+export const ENGRAVING = 'ENGRAVING'
+export const PAUSED = 'PAUSED'
+export const FINISHED = 'FINISHED'
+export const CANCELLED = 'CANCELLED'
+export const ERROR = 'ERROR'

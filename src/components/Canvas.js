@@ -10,12 +10,13 @@ export default class Canvas extends Component {
         image: null
     }
     componentDidUpdate() {
+        
         const image = new window.Image()
         image.src = this.props.image.file
         image.onload = () => {
             this.setState({
                 image: image
-            });
+            })
         }
     }
  
