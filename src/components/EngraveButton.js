@@ -6,8 +6,8 @@ import { WEBSOCKET_OPEN } from '../middleware/websocket'
 
 export default class EngraveButton extends Component {
     onBtnClick() {
-        const msg = {file: this.props.image.file}
-        this.props.wsSend(msg)
+        const { pixels } = this.props.image
+        this.props.wsSend(pixels)
     }
     render() {
         const style = {margin: '12px'}

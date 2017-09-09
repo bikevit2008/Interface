@@ -42,8 +42,6 @@ export default class InputImage extends Component {
         const img = new window.Image()
         img.src = urlObj
         img.onload = () => {
-            var image = { file: urlObj, width: img.width, height: img.height}
-            this.props.setImage(image)
             const canvas = document.createElement('canvas')
             const context = canvas.getContext('2d')
             canvas.width = img.width
@@ -55,6 +53,8 @@ export default class InputImage extends Component {
             console.log(monoPixels)
             const compressedMonoPixels = getCompressedMonoPixels(monoPixels)
             console.log(compressedMonoPixels)
+            var image = { file: urlObj, width: img.width, height: img.height, pixels: compressedMonoPixels}
+            this.props.setImage(image)
         }
     }
  
