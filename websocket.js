@@ -1,6 +1,4 @@
-
-
-var handle = function(ws, req){
+var handle = (machineControl) => (ws, req) => {
       console.log('Client connected')
       
       ws.on('message', msg => {

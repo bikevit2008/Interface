@@ -4,8 +4,10 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const config = require('./webpack.config')
 const app = new (require('express'))()
 const expressWs = require('express-ws')(app)
+const child_process = require('child_process')
 const { handle } = require('./websocket')
 
+const machineControl = child_process.fork('./machineControl')
 
 const port = 80
 
@@ -17,7 +19,7 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + '/index.html')
 })
 
-app.ws('/', handle)
+app.ws('/', handle(machineControl))
 
 app.listen(port, function(error) {
   if (error) {
@@ -25,4 +27,8 @@ app.listen(port, function(error) {
   } else {
     console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
   }
+})
+
+machineControl.on('message', (msg) => {
+
 })
