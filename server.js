@@ -5,10 +5,13 @@ const config = require('./webpack.config')
 const app = new (require('express'))()
 const expressWs = require('express-ws')(app)
 const process = require('process')
+const child_process = require('child_process')
+
 
 const { handle } = require('./websocket')
-
+const machineControl = child_process.fork('./machineControl')
 process.title = 'Laser-Engrave-Node'
+
 
 const port = 80
 
@@ -20,7 +23,7 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + '/index.html')
 })
 
-app.ws('/', handle)
+app.ws('/', handle(machineControl))
 
 app.listen(port, function(error) {
   if (error) {
