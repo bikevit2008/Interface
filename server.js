@@ -4,8 +4,11 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const config = require('./webpack.config')
 const app = new (require('express'))()
 const expressWs = require('express-ws')(app)
+const process = require('process')
+
 const { handle } = require('./websocket')
 
+process.title = 'Laser-Engrave-Node'
 
 const port = 80
 
