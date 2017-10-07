@@ -1,7 +1,10 @@
-process.on('message', function(m) {
+process.on('message', (msg) => {
   // Do work  (in this case just up-case the string
-  m = m.toUpperCase();
+  console.log('child out')
+  console.log(msg)
+  const array = new Uint8ClampedArray(msg.data)
 
+  console.log(array)
   // Pass results back to parent process
-  process.send(m.toUpperCase(m));
-});
+  process.send(msg)
+})

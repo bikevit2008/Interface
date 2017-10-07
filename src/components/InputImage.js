@@ -33,6 +33,18 @@ function getCompressedMonoPixels(monoPixels){
     }
     return compressedMonoPixels
 }
+function pixelsWithParameters(compressedMonoPixels, width, height){
+    const dimSize = 4
+    const dimensions = Buffer.alloc(dimSize)
+    dimensions.writeInt16BE(width)
+    dimensions.writeInt16BE(height, 2)
+
+    const img = Buffer.from(compressedMonoPixels)
+    const size = dimSize + compressedMonoPixels.length
+    const res =  Buffer.concat([dimensions, img], size)
+
+    return res
+}
 
 export default class InputImage extends Component {
     
@@ -53,7 +65,9 @@ export default class InputImage extends Component {
             console.log(monoPixels)
             const compressedMonoPixels = getCompressedMonoPixels(monoPixels)
             console.log(compressedMonoPixels)
-            var image = { file: urlObj, width: img.width, height: img.height, pixels: compressedMonoPixels}
+            const resPixels = pixelsWithParameters(compressedMonoPixels, img.width, img.height)
+            console.log(resPixels)
+            var image = { file: urlObj, width: img.width, height: img.height, pixels: resPixels}
             this.props.setImage(image)
         }
     }

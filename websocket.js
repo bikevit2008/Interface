@@ -6,6 +6,8 @@ var handle = (machineControl) => (ws, req) => {
             const array = new Uint8ClampedArray(msg)
 
             console.log(array)
+            machineControl.send(msg)
+            machineControl.send(array)
         }
         else {
             console.log('Meassage got: ' + msg)
