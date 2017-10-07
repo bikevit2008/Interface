@@ -35,9 +35,10 @@ function getCompressedMonoPixels(monoPixels){
 }
 function pixelsWithParameters(compressedMonoPixels, width, height){
     const dimSize = 4
+    const offsetDimBytes = dimSize >> 1
     const dimensions = Buffer.alloc(dimSize)
     dimensions.writeInt16BE(width)
-    dimensions.writeInt16BE(height, 2)
+    dimensions.writeInt16BE(height, offsetDimBytes)
 
     const img = Buffer.from(compressedMonoPixels)
     const size = dimSize + compressedMonoPixels.length
