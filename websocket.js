@@ -3,11 +3,8 @@ var handle = (machineControl) => (ws, req) => {
 
     ws.on('message', msg => {
         if (typeof msg !== 'string') {
-            const array = new Uint8ClampedArray(msg)
-
-            console.log(array)
+            console.log(msg)
             machineControl.send(msg)
-            machineControl.send(array)
         }
         else {
             console.log('Meassage got: ' + msg)
