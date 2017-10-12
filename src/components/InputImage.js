@@ -20,7 +20,10 @@ function getCompressedMonoPixels(monoPixels){
     if(lastPiece) {
         lengthTarget += 1
     }
-    var compressedMonoPixels = new Uint8ClampedArray(lengthTarget)
+    else{
+        lastPiece = 8
+    }
+    let compressedMonoPixels = new Uint8ClampedArray(lengthTarget)
     for(let i = 0; i < lengthTarget - 1; i++){
         for(let j = 0; j < 8; j++){
             let bit = monoPixels[(i << 3) + j] === 0 ? 0 : 1 //semicolons need to high priority
