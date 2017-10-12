@@ -1,4 +1,4 @@
-import { SET_IMAGE } from '../constants/inputImage'
+import { SET_IMAGE } from '../constants/InputImage'
 
 const initialState = {
     image: {
