@@ -47,6 +47,6 @@
     "redux": "3.7.2",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.2.0",
-    "rpio": "file:rpio"
+    "rpio": "^0.9.16"
   }
 }

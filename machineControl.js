@@ -1,3 +1,4 @@
+const { engraveFromIPC } = require('./app')
 process.on('message', (msg) => {
     // Do work  (in this case just up-case the string
     console.log('child out')
@@ -20,6 +21,7 @@ process.on('message', (msg) => {
     console.log(unCompressedMonoPixels)
     const arrayToEngrave = twoDimArr(unCompressedMonoPixels, width, height)
     console.log(arrayToEngrave)
+    engraveFromIPC(arrayToEngrave)
     //process.send(msg)
 })
 function getUnCompressedMonoPixels(compressedMonoPixels, width, height){
@@ -35,7 +37,7 @@ function getUnCompressedMonoPixels(compressedMonoPixels, width, height){
             let pixel = bit === 0 ? 0 : 255
             monoPixels[i+j] = pixel
             let z = i+j
-            console.log('Number: ' + num + ' bit: ' + bit + ' bitindex: ' + j + ' pixel: '+ pixel + ' arrindex: ' + z + ' arrvalue: ' + monoPixels[i+j])
+            //console.log('Number: ' + num + ' bit: ' + bit + ' bitindex: ' + j + ' pixel: '+ pixel + ' arrindex: ' + z + ' arrvalue: ' + monoPixels[i+j])
         }
     }
     for(let j = 0; j < lastPiece; j++){
@@ -44,7 +46,7 @@ function getUnCompressedMonoPixels(compressedMonoPixels, width, height){
         let pixel = bit === 0 ? 0 : 255
         monoPixels[beforeLastPiece + j] = pixel
         let z = beforeLastPiece + j
-        console.log('Number: ' + num + ' bit: ' + bit + ' bitindex: ' + j + ' pixel: '+ pixel + ' arrindex: ' + z + ' arrvalue: ' + monoPixels[beforeLastPiece + j])
+        //console.log('Number: ' + num + ' bit: ' + bit + ' bitindex: ' + j + ' pixel: '+ pixel + ' arrindex: ' + z + ' arrvalue: ' + monoPixels[beforeLastPiece + j])
     }
     return monoPixels
 }
